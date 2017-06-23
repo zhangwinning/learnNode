@@ -1,0 +1,19 @@
+{
+  "name": "learnNode",
+  "version": "1.0.0",
+  "description": "node.js学习笔记",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WenNingZhang/learnNode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WenNingZhang/learnNode/issues"
+  },
+  "homepage": "https://github.com/WenNingZhang/learnNode#readme"
+}
