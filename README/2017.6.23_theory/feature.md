@@ -18,7 +18,7 @@ console.log('发送Ajax结束');
 ```
 
 这段代码中先输出'发送Ajax结束',然后'响应内容',下图是一个经典的Ajax调用.
-![fds](picture/AJAX请求.png)
+![fds](https://raw.githubusercontent.com/smshen/MarkdownPhotos/master/Res/test.jpg)
 
 
 
