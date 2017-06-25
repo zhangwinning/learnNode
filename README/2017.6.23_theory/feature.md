@@ -18,7 +18,22 @@ console.log('发送Ajax结束');
 ```
 
 这段代码中先输出'发送Ajax结束',然后'响应内容',下图是一个经典的Ajax调用.
-![fds](https://github.com/WenNingZhang/learnNode/blob/master/README/picture/AJAX请求.png?raw=true)
+![AJAX请求.png](https://github.com/WenNingZhang/learnNode/blob/master/README/picture/AJAX请求.png?raw=true)
+
+而在Node中,异步也常见
+
+例子二:
+```js
+var fs = require('fs');
+fs.readFile('/path', (err, file) => {
+    consoel.log('读取文件结束')
+});
+console.log('end');
+```
+
+这里的先输出'end', 在输出'读取文件结束',如图这是Node中经典的异步调用
+![Node异步请求.png](https://github.com/WenNingZhang/learnNode/blob/master/README/picture/Node异步请求.png?raw=true)
+
 
 
 

@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/WenNingZhang/learnNode/issues"
   },
-  "homepage": "https://github.com/WenNingZhang/learnNode#readme"
+  "homepage": "https://github.com/WenNingZhang/learnNode#readme",
+  "dependencies": {
+    "mongoose": "^4.10.8"
+  }
 }
