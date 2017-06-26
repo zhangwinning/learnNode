@@ -34,6 +34,24 @@ console.log('end');
 这里的先输出'end', 在输出'读取文件结束',如图这是Node中经典的异步调用
 ![Node异步请求.png](https://github.com/WenNingZhang/learnNode/blob/master/README/picture/Node异步请求.png?raw=true)
 
+## 事件与回调函数
+Evented I/O for V8 JavaScript, (基于V8引擎实现的事件驱动I/O);
+
+事件也是先在前端应用的,Dom中的各种事件;在Ajax大规模应用之后,异步请求得到了更加广泛的认同,而Ajax是基于事件机制的
+
+例子一:
+```js
+$.Ajax({
+	'url':'/url',
+	'method':'post',
+	'data':[],
+	'success':function(data) {
+		//success事件
+	}
+});
+```
+这段代码我们给Ajax请求绑定success事件,在发出请求之后,只需关心成功之后我们要执行的业务逻辑代码即可.
+
 
 
 
