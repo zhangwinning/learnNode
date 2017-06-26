@@ -18,7 +18,7 @@ console.log('发送Ajax结束');
 ```
 
 这段代码中先输出'发送Ajax结束',然后'响应内容',下图是一个经典的Ajax调用
-![AJAX请求.png](https://github.com/WenNingZhang/learnNode/blob/master/README/picture/AJAX请求.png?raw=true)
+![AJAX请求.png](https://raw.githubusercontent.com/WenNingZhang/learnNode/master/README/picture/libuv实现跨平台.png)
 
 而在Node中,异步也常见
 
