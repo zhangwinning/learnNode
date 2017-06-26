@@ -103,7 +103,7 @@ Node保持了js在浏览器中单线程的特点,它在弱势是
 
 Node通过libuv实现跨平台,libuv实现跨平台的架构图
 
-![libuv实现跨平台.png](https://github.com/WenNingZhang/learnNode/blob/master/README/picture/libuv实现跨平台.png?raw=true)
+![libuv实现跨平台.png](https://github.com/WenNingZhang/learnNode/blob/master/README/picture/libuv实现跨平台.pnggb?raw=true)
 
 ## 相关链接
 
