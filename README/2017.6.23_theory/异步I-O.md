@@ -5,7 +5,7 @@
 
 * 异步I/O的优势
 * 异步I/O
-* 单线程
+* Node异步I/O模型
 * 跨平台
 
 ## 异步I/O的优势
@@ -33,6 +33,17 @@
 理想的非阻塞异步I/O架构图:
 
 ![理想的异步I-O模型.png](https://github.com/WenNingZhang/learnNode/blob/master/README/picture/理想的异步I-O模型.png?raw=true)
+
+* 现实的异步I/O
+在单线程的情况下,让部分线程进行阻塞I/O操作来获取数据,让一个线程进行计算处理,通过线程之间的通信将I/O获取的数据进行传递,
+可以实现异步I/O.
+
+JavaScript是单线程的，但Node本身其实是多线程的，除了用户代码无法并行执行外，所有的I/O请求是可以并行执行的。
+
+## Node异步I/O模型
+
+* 事件循环
+
 
 
 ## 相关链接
