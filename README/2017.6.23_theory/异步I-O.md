@@ -44,7 +44,11 @@ JavaScript是单线程的，但Node本身其实是多线程的，除了用户代
 ## Node异步I/O模型
 
 * 事件循环
+  `事件循环`被称为Node自身执行模型,
+在进程启动时Node.js会创建一个类似于while（true）的循环，每次执行循环体的过程就是询问每个观察者是否有事件等待处理，如果有就取出事件和
+相关的回调函数处理，如果没有事件了就退出进程
 
+![理想的异步I-O模型.png](https://github.com/WenNingZhang/learnNode/blob/master/README/picture/事件循环.png?raw=true)
 
 
 ## 相关链接
