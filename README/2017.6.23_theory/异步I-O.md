@@ -50,6 +50,6 @@ JavaScript是单线程的，但Node本身其实是多线程的，除了用户代
 
 ![理想的异步I-O模型.png](https://github.com/WenNingZhang/learnNode/blob/master/README/picture/事件循环.png?raw=true)
 
-
 ## 相关链接
 
+http://www.jianshu.com/p/f196da6b2cad
