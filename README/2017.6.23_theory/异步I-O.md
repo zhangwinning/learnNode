@@ -52,4 +52,5 @@ JavaScript是单线程的，但Node本身其实是多线程的，除了用户代
 
 ## 相关链接
 
+
 http://www.jianshu.com/p/f196da6b2cad
