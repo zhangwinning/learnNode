@@ -23,7 +23,7 @@
 所以结论为:单线程的意思是同一时间只做一件事。
 
 那么我们看第四张图来说明情况
-  ![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%204.png)
+![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%204.png)
 
 - 运行这个函数我们要牢记调用栈的规律:如果我们运行这个函数,这个函数进栈,
 如果从函数中返回,该函数出栈。
