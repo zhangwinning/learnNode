@@ -28,9 +28,14 @@
 - 运行这个函数我们要牢记调用栈的规律:如果我们运行这个函数,这个函数进栈,
 如果从函数中返回,该函数出栈。
 
-- 运行函数先是`main()`进栈,`printSquare(4)`得到调用进栈,再调用``
+- 运行函数先是`main()`进栈,`printSquare(4)`得到调用进栈,再调用`square(n)`函数，进栈;
+最后`multiply(n, n)`进栈,最后按照顺序依次出栈。
 
-我们在浏览器开发中可能碰到过这样的代码
+1. 此外我们在浏览器开发中可能碰到过这样的代码
+
+上图第五张图
+
+![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%205.png)
 
 
 ```
@@ -64,9 +69,13 @@ Error: Oops
     at Object.<anonymous> (/Users/zhangwenning/git/jfjun-cw/test.js:16:1)
     
 ```
-说明这个函数调用顺序是这样的.
+从而验证了上面函数进栈和出栈的顺序操作。
 
-说明`RangeError: Maximum call stack size exceeded`
+2. 在代码开发中可能遇到这样的问题 `RangeError: Maximum call stack size exceeded`
+
+直接上图六
+
+![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%206.png)
 还有一个例子:
 
 ```
@@ -76,29 +85,37 @@ function foo() {
 
 foo();
 ```
-图片:screenshot(2).png,这张图片显示了这些.
+
+通过`调用栈`现在出现问题,引出是什么原因导致程序变慢,奥,原来是`阻塞`。
+
+上图片七
+
+![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%207.png)
+
+
 
 这里引出`阻塞`的概念，我们谈论`阻塞`的概念,其实`阻塞`没有特定`概念`，
 
-其实`阻塞`我们就是程序运行的慢.
+其实`阻塞`我们就是程序运行的慢。
 
-下面在看一张图4 ,
 
-这里有网络请求，并且是同步操作，所以执行的慢了，所以我们定义为`阻塞`了
+引出图八
 
-图片:
+![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%208.png)
 
-这里的解决方案,当然我们就采取异步调用了.
+这里有网络请求，并且是同步操作，所以执行的慢了，所以我们定义为`阻塞`了。
 
-再来看一张图:
+出现`阻塞`不可怕,但要有解决方案,而这里的解决方案就是`异步调用`。
 
-[5],这张图
+看图九
+
+![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%2010.png)
 
 **We log JSConfEU, clear, five seconds later somehow magically "there" appears on the stack**
 
-这基本上是并发事件的由来.
+这张图基本上反映了并发事件的由来。
 
-然而开始说过js在同一个时间只能做一件事.
+然而开始说过js在同一个时间只能做一件事。
 
 我们可以同时做多件事的原因是:浏览器不仅仅一个执行环境
 
@@ -106,11 +123,10 @@ foo();
 
 JavaScript Runtime 同一时间只能做一件事情,但是浏览器提供了一些API是，这些APIs是高效的线程,因而可以实现并发性.
 
-如果你是node开发者,这张图与node也是类似的,这里的web API是由c++API,
+这张图与node也是类似的,这里的web API是由c++API,
 
 而多线程是通过c++隐藏的.
-
   
-  I'm a single threaded single concurrent language  ‑‑ right. yeah, cool, I have a call stack, an event loop, a callback queue, and some other APIs and stuff
+I'm a single threaded single concurrent language  ‑‑ right. yeah, cool, I have a call stack, an event loop, a callback queue, and some other APIs and stuff
   
-  这里说明了js是单线程单进程的。有一个调用stack, 一个事件循环,一个回调函数队列和其他的api.
+这里说明了js是单线程单进程的。有一个调用stack, 一个事件循环,一个回调函数队列和其他的api.
