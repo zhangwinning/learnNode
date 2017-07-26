@@ -111,15 +111,13 @@ foo();
 
 ![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%2010.png)
 
-**We log JSConfEU, clear, five seconds later somehow magically "there" appears on the stack**
+We log JSConfEU, clear, five seconds later somehow magically "there" appears on the stack
 
 这张图基本上反映了并发事件的由来。
 
 然而开始说过js在同一个时间只能做一件事。
 
 我们可以同时做多件事的原因是:浏览器不仅仅一个执行环境
-
-查看下面这张图.screenshot(6)
 
 JavaScript Runtime 同一时间只能做一件事情,但是浏览器提供了一些API是，这些APIs是高效的线程,因而可以实现并发性.
 
