@@ -3,7 +3,7 @@
  讲述node之前，先要讲述一下js，其实js的运行机制和Node是类似的。
  
  下面看一张图显示js Runtime 
- ![image]![image](http://note.youdao.com/share/?id=7637e9c56db179fdfd11197b494157ec&type=note#/)
+ ![image]![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot.png)
  
 - 这里的`heap`是分配内存大小,而`stack`是处理上下文环境的地方,也就是执行代码程序的地方.
  
