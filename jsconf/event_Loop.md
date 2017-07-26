@@ -1,18 +1,15 @@
-今天看到一个不错的视频是讲述js的event Loop 的[event-loop](https://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html)，这里讲述的还有Node的事件循环的,索性记录下来，方便下次查看。
-
- 讲述node之前，先要讲述一下js，其实js的运行机制和Node是类似的。
+今天看到一个不错的视频是讲述js的[event-loop](https://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html)索性记录下来，方便下次查看。
  
- 下面看一张图显示js Runtime 
- ![image]![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot.png)
+ 下面先看第一张图(js的 Runtime)(https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot.png)
  
-- 这里的`heap`是分配内存大小,而`stack`是处理上下文环境的地方,也就是执行代码程序的地方.
+- 这里`heap`的作用是分配内存大小,而`stack`是处理上下文环境的地方,也就是执行代码程序的地方.
  
-- 后来发现`setTimeout `或者`HTTP request`竟然没有在`stack`中,这里开始研究一下喽。
+- 后来发现`setTimeout `或者`HTTP request`竟然没有在`stack`中执行,这里要研究一下喽。
  
- 再来一张图显示js Runtime 
- ![image]![image](http://note.youdao.com/share/?id=c8eb31213b8256b134c6f4cecfcbb8f4&type=notebook#/WEBb750ceb228e504bcb2303774e6a994a4)
-- 后来发现还有一些东西是browser提供的,例如called web APIs, event loop 和 callback queue
-而上面`setTimeout`, `HTTP`函数是则是在web APIs中运行的.这些函数的回调放到`callback queue`里面,通过event Loop 把在`callback queue`中的第一个取出来执行.
+ 再来第二张图解释这个疑问
+ (https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%202.png)
+- 后来发现还有一些东西(例如called web APIs, event loop 和 callback queue)是由浏览器提供的.
+- 而上面`setTimeout`, `HTTP`函数是则是在web APIs中运行的.这些函数的回调放到`callback queue`里面,通过event Loop 把在`callback queue`中的第一个取出来在放到`stack`中执行。
 
 `one thread === one call stack === one thing at a time`
 
