@@ -8,19 +8,27 @@
  
  再来第二张图解释这个疑问
   ![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%202.png)
-- 后来发现还有一些东西(例如called web APIs, event loop 和 callback queue)是由浏览器提供的.
-- 而上面`setTimeout`, `HTTP`函数是则是在web APIs中运行的.这些函数的回调放到`callback queue`里面,通过event Loop 把在`callback queue`中的第一个取出来在放到`stack`中执行。
+- 后来发现还有一些东西(例如called web APIs, event loop 和 callback queue)是由浏览器提供的。
+- 而上面`setTimeout`, `HTTP`函数是则是在web APIs中运行的,这些函数的回调放到`callback queue`里面,通过event Loop 把在`callback queue`中的第一个取出来然后放到`stack`中执行。
+
+---
+现在是仔细分析一下
+
+再来看第三张图 
+![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%203.png)
 
 `one thread === one call stack === one thing at a time`
 
-单线程的意思是同一时间只做一件事.
+单线程===只有一个调用栈===同一时间只能做一件事情,
+所以结论为:单线程的意思是同一时间只做一件事。
 
-那么我们看一下下面的图来说明这件事.
+那么我们看第四张图来说明情况
+  ![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%204.png)
 
-screenshot1
+- 运行这个函数我们要牢记调用栈的规律:如果我们运行这个函数,这个函数进栈,
+如果从函数中返回,该函数出栈。
 
-运行这个函数我们要牢记调用栈的规律:如果我们运行这个函数,这个函数进栈,
-如果从函数中返回,该函数出栈.
+- 运行函数先是`main()`进栈,`printSquare(4)`得到调用进栈,再调用``
 
 我们在浏览器开发中可能碰到过这样的代码
 
