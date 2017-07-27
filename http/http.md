@@ -102,8 +102,49 @@ http服务器是一个`EventEmitter`事件,当然它有一些事件了。
 
 `connection`事件,底层客户端和服务器建立tcp连接成功时,触发这个事件。
 
-`request`事件,建立tcp连接后,http底层将数据流抽象为http请求和http相应,当请求数据到达服务器端后,在解析出http请求头后,将会触发该事件;在res.end()后,tcp连接可能用于下一次请求相应。
+`request`事件,建立tcp连接后,http底层将数据流抽象为http请求和http相应,当请求数据到达服务器端后,在解析出http请求头后,将会触发该事件; 在res.end()后,tcp连接可能用于下一次请求相应。
 
+```js
+//设置http服务器的请求事件。
+
+console.log('starting');
+var server = require('http').createServer();
+
+server.on('connection',function(socket){console.log('*server/connection');});
+server.on(
+    'request',
+    function(request, response){
+        console.log('*server/request');
+        request.on(
+            'data',
+            function(chunk){
+                console.log('*request/data');
+            }
+        );
+        request.on(
+            'end',
+            function(){
+                console.log('*request/end');
+                response.writeHead(200,"OK");
+                response.write('Hello');
+                response.end();
+            }
+        );
+    }
+);
+server.listen(8080);
+console.log('started');
+
+```
+通过运行`curl localhost:8080 -i`服务器打印出来的是
+
+```js
+
+*server/connection
+*server/request
+*request/end
+
+```
 
 
 
