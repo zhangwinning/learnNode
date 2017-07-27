@@ -16,6 +16,8 @@
 
   * 当请求产生的过程中,http模块拿到连接中传过来的数据,调用二进制模块的`http_parser`进行解析,在解析完报文内容后,触发`request事件`,而`request事件`的监听器则是http.createServer([requestListener]),从而在这儿就处理用户的业务逻辑。
 
+* http请求
+
 ```js
 var http = require('http')
 http.createServer((request, response) => {
@@ -58,5 +60,24 @@ Data:  {"username":"zwn"}
 
 ```
 说明post请求的数据是通过request的`data`事件触发获得的。
+
+这里报文头是通过二进制模块的`http_parser`解析的,因此get请求的url可以解析出来,但是post请求中数据放到了请求体中了,因此只能通过程序获取报文体的数据了。
+
+* http响应
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
