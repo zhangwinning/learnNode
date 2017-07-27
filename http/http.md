@@ -16,6 +16,8 @@
 
   * 当请求产生的过程中,http模块拿到连接中传过来的数据,调用二进制模块的`http_parser`进行解析,在解析完报文内容后,触发`request事件`,而`request事件`的监听器则是http.createServer([requestListener]),从而在这儿就处理用户的业务逻辑。
 
+* http请求
+
 ```js
 var http = require('http')
 http.createServer((request, response) => {
@@ -58,4 +60,37 @@ Data:  {"username":"zwn"}
 
 ```
 说明post请求的数据是通过request的`data`事件触发获得的。
+
+这里报文头是通过二进制模块的`http_parser`解析的,因此get请求的url可以解析出来,但是post请求中数据放到了请求体中了,因此只能通过程序获取报文体的数据了。
+
+* http响应
+
+http封装了对底层连接的写操作,可以将其看成一个可写的流对象,它通过`res.setHeader()`和`res.writeHead()`设置响应头部。
+
+```js
+var http = require('http')
+http.createServer((request, response) => {
+	response.writeHead(200, {'content-type': 'text/plain'});
+	response.end('hello \n');
+}).listen(8080);
+console.log('服务器启动完成');
+
+```
+通过`curl -H "Content-Type: application/json" -X POST -d '{"username":"zwn"}' http://localhost:8080 -i` 加上一个`-i`在客户端处显示响应头的信息如下:
+
+```js
+
+HTTP/1.1 200 OK
+content-type: text/plain
+Date: Thu, 27 Jul 2017 08:01:25 GMT
+Connection: keep-alive
+Transfer-Encoding: chunked
+
+hello
+```
+这里有个坑,
+
+
+
+
 
