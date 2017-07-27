@@ -90,7 +90,7 @@ function foo() {
 foo();
 ```
 
-通过`调用栈`现在出现问题,引出是什么原因导致程序变慢,奥,原来是`阻塞`。
+通过`调用栈`出现问题,引出是什么原因导致程序变慢,奥,原来是`阻塞`。
 
 上图片七
 
@@ -117,7 +117,7 @@ foo();
 
 We log JSConfEU, clear, five seconds later somehow magically "there" appears on the stack
 
-这张图基本上反映了并发事件的由来。
+这张图反映了并发事件的由来。
 
 然而开始说过js在同一个时间只能做一件事。
 
@@ -130,3 +130,21 @@ JavaScript Runtime 同一时间只能做一件事情,但是浏览器提供了一
 I'm a single threaded single concurrent language  ‑‑ right. yeah, cool, I have a call stack, an event loop, a callback queue, and some other APIs and stuff
   
 这里说明了js是单线程单进程的。有一个调用stack, 一个事件循环,一个回调函数队列和其他的api。
+
+例子二,setTime(function(){}, 0);
+
+上图
+
+设置定时器为0的含义是在`webapis`中不用等待处理了,webapis直接把回调函数推到`task queue`,
+
+但是`event loop`还是要在`stack`执行完成所有的函数才会把`task queue`的第一个踢到`task`中
+
+去。
+
+例子三,异步请求的也是类似的
+
+上图
+
+
+
+
