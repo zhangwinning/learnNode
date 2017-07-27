@@ -1,7 +1,7 @@
 今天看到一个不错的视频是讲述js的[event-loop](https://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html)索性记录下来，方便下次查看。
  
  下面先看第一张图(js的 Runtime)
-  ![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot.png)
+  ![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/001.png)
  
 - 这里`heap`的作用是分配内存大小,而`stack`是处理上下文环境的地方,也就是执行代码程序的地方.
  
@@ -9,7 +9,7 @@
  
  再来第二张图解释这个疑问
 
-  ![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%202.png)
+  ![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/002.png)
 - 后来发现还有一些东西是代码运行所需要的(例如called web APIs, event loop 和 callback queue),而这些是由浏览器提供的。
 - 而上面`setTimeout`, `HTTP`函数是则是在web APIs中运行的,这些函数的回调放到`callback queue`里面,通过event Loop 把在`callback queue`中的第一个取出来然后放到`stack`中执行。
 
@@ -18,7 +18,7 @@
 
 再来看第三张图 
 
-![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%203.png)
+![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/003.png)
 
 `one thread === one call stack === one thing at a time`
 
@@ -28,7 +28,7 @@
 
 那么我们看第四张图来说明情况
 
-![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%204.png)
+![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/004.png)
 
 - 运行这个函数我们要牢记调用栈的规律:如果我们运行这个函数,这个函数进栈,
 如果从函数中返回,该函数出栈。
@@ -40,7 +40,7 @@
 
 上图第五张图
 
-![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%205.png)
+![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/005.png)
 
 
 ```
@@ -80,7 +80,7 @@ Error: Oops
 
 直接上图六
 
-![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%206.png)
+![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/006.png)
 还有一个例子:
 
 ```
@@ -95,7 +95,7 @@ foo();
 
 上图片七
 
-![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%207.png)
+![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/007.png)
 
 
 
@@ -106,7 +106,7 @@ foo();
 
 引出图八
 
-![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%208.png)
+![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/008.png)
 
 这里有网络请求，并且是同步操作，所以执行的慢了，所以我们定义为`阻塞`了。
 
@@ -114,7 +114,7 @@ foo();
 
 看图九
 
-![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/screenshot%2010.png)
+![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/009.png)
 
 We log JSConfEU, clear, five seconds later somehow magically "there" appears on the stack
 
@@ -136,6 +136,8 @@ I'm a single threaded single concurrent language  ‑‑ right. yeah, cool, I ha
 
 上图
 
+![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/010.png)
+
 设置定时器为0的含义是在`webapis`中不用等待处理了,webapis直接把回调函数推到`task queue`,
 
 但是`event loop`还是要在`stack`执行完成所有的函数才会把`task queue`的第一个踢到`task`中
@@ -146,6 +148,10 @@ I'm a single threaded single concurrent language  ‑‑ right. yeah, cool, I ha
 
 上图
 
+![image](https://github.com/WenNingZhang/learnNode/blob/master/jsconf/event_Loop/011.png)
 
+以上是js在浏览器中运行的原理,其实node与之也是类似的,
+
+无非就是把webapis换成c++,用c++隐藏下面的多线程。
 
 
