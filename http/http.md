@@ -16,7 +16,7 @@
 
   * 当请求产生的过程中,http模块拿到连接中传过来的数据,调用二进制模块的`http_parser`进行解析,在解析完报文内容后,触发`request事件`,而`request事件`的监听器则是http.createServer([requestListener]),从而在这儿就处理用户的业务逻辑。
 
-  ```js
+```js
 var http = require('http')
 http.createServer((request, response) => {
 	console.log(request.url);
@@ -33,7 +33,7 @@ http.createServer((request, response) => {
 
 console.log('服务器启动完成');
   
- ```
+```
 这里如果通过`curl -X GET 'http://localhost:8080/locations?id=3'` get 方式请求时,
 
 ```js
