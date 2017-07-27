@@ -36,32 +36,32 @@ http.createServer((request, response) => {
 console.log('服务器启动完成');
   
 ```
-这里如果通过`curl -X GET 'http://localhost:8080/locations?id=3'` get 方式请求时,
+  * 这里如果通过`curl -X GET 'http://localhost:8080/locations?id=3'` get 方式请求时,
 
-```js
-/locations?id=3				//这里是request.url的值,说明server对于get请求的参数回直接从url中获取。
-{ host: 'localhost:8080',
-  'user-agent': 'curl/7.43.0',
-  accept: '*/*' }
-Data:  <Buffer >
-Data:
-```
-如果通过`curl -H "Content-Type: application/json" -X POST -d '{"username":"zwn"}' http://localhost:8080` post方式请求时,
+	```js
+	/locations?id=3				//这里是request.url的值,说明server对于get请求的参数回直接从url中获取。
+	{ host: 'localhost:8080',
+	  'user-agent': 'curl/7.43.0',
+	  accept: '*/*' }
+	Data:  <Buffer >
+	Data:
+	```
+  * 如果通过`curl -H "Content-Type: application/json" -X POST -d '{"username":"zwn"}' http://localhost:8080` post方式请求时,
 
-```js
-/		//这里是request.url的值
-{ host: 'localhost:8080',
-  'user-agent': 'curl/7.43.0',
-  accept: '*/*',
-  'content-type': 'application/json',
-  'content-length': '18' }
-Data:  <Buffer 7b 22 75 73 65 72 6e 61 6d 65 22 3a 22 7a 77 6e 22 7d>
-Data:  {"username":"zwn"}
+	```js
+	/		//这里是request.url的值
+	{ host: 'localhost:8080',
+	  'user-agent': 'curl/7.43.0',
+	  accept: '*/*',
+	  'content-type': 'application/json',
+	  'content-length': '18' }
+	Data:  <Buffer 7b 22 75 73 65 72 6e 61 6d 65 22 3a 22 7a 77 6e 22 7d>
+	Data:  {"username":"zwn"}
 
-```
-说明post请求的数据是通过request的`data`事件触发获得的。
+	```
+	说明post请求的数据是通过request的`data`事件触发获得的。
 
-这里报文头是通过二进制模块的`http_parser`解析的,因此get请求的url可以解析出来,但是post请求中数据放到了请求体中了,因此只能通过程序获取报文体的数据了。
+	这里报文头是通过二进制模块的`http_parser`解析的,因此get请求的url可以解析出来,但是post请求中数据放到了请求体中了,因此只能通过程序获取报文体的数据了。
 
 * http响应
 
