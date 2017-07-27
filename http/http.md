@@ -98,9 +98,13 @@ hello
 
 * http服务器的事件
 
-http服务器是一个`EventEmitter`事件。
+http服务器是一个`EventEmitter`事件,当然它有一些事件了。
 
-	* 
+`connection`事件,底层客户端和服务器建立tcp连接成功时,触发这个事件。
+
+`request`事件,建立tcp连接后,http底层将数据流抽象为http请求和http相应,当请求数据到达服务器端后,在解析出http请求头后,将会触发该事件;在res.end()后,tcp连接可能用于下一次请求相应。
+
+
 
 
 
