@@ -3,6 +3,7 @@
 var  http = require('http')
 http.createServer((request, response) => {
 	response.writeHead(200, {'content-type': 'text/plain'});
-	response.end('hello \n');
+	response.write('hello \n');
+	response.end('world \n');
 }).listen(8080);
 console.log('服务器启动完成');

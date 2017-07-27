@@ -88,9 +88,19 @@ Transfer-Encoding: chunked
 
 hello
 ```
-这里有个坑,
+这里有个坑,setHeader()可以调用多次,但是只有调用writeHead()后,报文才会写到连接中。
 
+报文体部分则是通过res.write()和res.end()
 
+方法的调用,write和end方法都可以把数据发送的客户端,但是res.end()
+
+发送完数据之后,会将此次请求得问客户端关闭,而res.write()则不会关闭。
+
+* http服务器的事件
+
+http服务器是一个`EventEmitter`事件。
+
+	* 
 
 
 
