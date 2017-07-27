@@ -154,4 +154,35 @@ I'm a single threaded single concurrent language  ‑‑ right. yeah, cool, I ha
 
 无非就是把webapis换成c++,用c++隐藏下面的多线程。
 
+这里有一个例子是判断`setTimeout(fn, 0)`和`process.nextTick`的区别
+
+```js
+ setTimeout(function timeout() {
+    console.log('TIMEOUT FIRED');
+}, 0);
+
+
+process.nextTick(function A() {
+    console.log(1);
+    process.nextTick(function B(){console.log(2);});
+});
+
+```
+process.nextTick方法可以在当前"执行栈"的尾部----Event 
+Loop（主线程读取"任务队列",或者主线程读取`callback queue`）之前----
+触发回调函数。也就是说，它指定的任务总是发生在所有异步任务之前。
+
+因此执行结果为:
+```js
+1
+2
+TIMEOUT FIRED
+```
+
+
+
+
+
+
+
 
