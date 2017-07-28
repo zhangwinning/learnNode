@@ -4,8 +4,8 @@
 
 ![image](https://github.com/WenNingZhang/learnNode/blob/master/stream/video_picture/pipe/001.png)
 
-当数据填满`buffer`后,会触发可读流的`data`事件,然后可写流通过调用`write`事件把数据写到
-文件中。
+当数据填满`buffer`后,会触发可读流的`data`事件,然后调用可写流通过调用`write`事件把数据
+写到文件中,这是'writeStream.js'的流程。
 
 而上面的这个流程可以通过pipe方法完成。
 
