@@ -1,0 +1,13 @@
+
+temporary storage spot for chunk of data that is being tranksferred from one place to anther
+
+the buffer is filled with data, then passed along
+
+transfer small chunks of data at a time 
+
+从一个地方转移到另一个地方的大量数据的临时存储点。
+
+缓冲区内充满了数据之后,然后传递。
+
+一次传输小块数据。
+
