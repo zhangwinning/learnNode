@@ -1,8 +1,8 @@
 #### 利用stream下载图片
 
 ```js
-	var fs = require('fs'),
-    request = require('request');
+var fs = require('fs'),
+request = require('request');
 
 var download = function(uri, filename, callback){
   request.head(uri, function(err, res, body){
