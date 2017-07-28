@@ -20,8 +20,7 @@ myReadStream.on('data', function(chunk) {
 * 可写流要有一个`目标地址`用来指明可写流要写到什么地方去。
 * 可读流读出数据后,可写流通过write方法直接写回去。
 * 因为我们经常从可读流中读取数据,然后写到可写流中去,最后发送数据,然而我们还有一个更快的
-
-方式处理这个流程,那就是pipe。
+  方式处理这个流程,那就是pipe。
 
 ```js
 in fact because we do this so often reading streams then  writing streams
