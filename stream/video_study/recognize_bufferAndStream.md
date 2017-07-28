@@ -45,11 +45,10 @@
 
 集起来,当`buffer`数据满了,`buffer`把数据放到processed中,最后返给用户即可。
 
-##### 这里第四张图介绍stream流程
+##### 这里第四张图介绍stream在node中的作用
 
 ![image](https://github.com/WenNingZhang/learnNode/blob/master/stream/video_picture/004.png)
 
-#### stream可以增强性能
 
 
 
